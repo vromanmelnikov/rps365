@@ -5,18 +5,20 @@ import CatalogFilters from "components/CatalogFilters";
 import CatalogService from "shared/catalog.service";
 import CatalogItems from "components/CatalogItems";
 import { useEffect, useState } from "react";
+import useSWR from "swr";
 
-export default function Catalog({items, tags}) {
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-  console.log(items)
+export default function Catalog({ items, tags }) {
+  const { data, error, isLoading } = useSWR("/api/items", fetcher);
 
-  const [filteredItems, setFilteredItems] = useState([])
+  const [filteredItems, setFilteredItems] = useState([]);
 
-  useEffect(
-    () => {
-      setFilteredItems([...items])
-    }, [items]
-  )
+  useEffect(() => {
+    if (data) {
+      setFilteredItems([...data]);
+    }
+  }, [data]);
 
   const title = "Каталог";
 
@@ -32,12 +34,14 @@ export default function Catalog({items, tags}) {
               <li>
                 <a>Главная</a>
               </li>
-              <li><b>Каталог</b></li>
+              <li>
+                <b>Каталог</b>
+              </li>
             </ul>
           </div>
           <div className={`${styles.catalog}`}>
-            <CatalogFilters tags={tags}/>
-            <CatalogItems items={filteredItems}/>
+            <CatalogFilters tags={tags} />
+            <CatalogItems items={filteredItems} />
           </div>
         </main>
       </Layout>
@@ -46,17 +50,15 @@ export default function Catalog({items, tags}) {
 }
 
 export async function getServerSideProps() {
+  const catalogService = new CatalogService();
 
-  const catalogService = new CatalogService()
-
-  const items = await catalogService.getItems()
-  const tags = await catalogService.getTags()
+  const items = await catalogService.getItems();
+  const tags = await catalogService.getTags();
 
   return {
     props: {
       items,
-      tags
-    }
-  }
-
+      tags,
+    },
+  };
 }

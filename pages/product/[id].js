@@ -5,8 +5,12 @@ import CatalogService from "shared/catalog.service";
 import styles from './product.module.scss'
 import ProductItem from "components/ProductItem";
 import Link from "next/link";
+import useSWR from "swr";
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function Product({ product }) {
+
   const title = `${product.title}. ${product.subtitle}`;
 
   return (
