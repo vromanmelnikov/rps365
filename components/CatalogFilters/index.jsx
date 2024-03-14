@@ -1,10 +1,23 @@
 import { sortFilters } from "shared/catalog.shared";
 import styles from "./catalog-filters.module.scss";
 import { Slider } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Tags from "./Tags";
+import useSWR from "swr";
 
-export default function CatalogFilters({ tags }) {
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
+export default function CatalogFilters() {
+  const { data, error, isLoading } = useSWR("/api/tags", fetcher);
+
+  const [tags, setTags] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      setTags(data);
+    }
+  }, [data]);
+
   const [value, setValue] = React.useState([20, 37]);
 
   const handleChange = (event, newValue) => {
@@ -56,7 +69,7 @@ export default function CatalogFilters({ tags }) {
       </div>
       <div className={`${styles.filter}`}>
         <span className={`${styles.type}`}>Теги</span>
-        <Tags tags={tags}/>
+        <Tags tags={tags} />
       </div>
     </aside>
   );
