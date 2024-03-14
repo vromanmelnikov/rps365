@@ -1,0 +1,65 @@
+@import '../../../styles/variables';
+
+.item {
+    width: calc(33% - 1.5rem);
+    // aspect-ratio: 1/0.75;
+    background-color: $second-color;
+    border-radius: $base-radius;
+    padding: .75rem;
+
+    border: 1px solid rgba(0, 0, 0, 0.011);
+
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    .image {
+        width: 100%;
+        aspect-ratio: 1/0.5;
+        background-color: aliceblue;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            font-weight: 500;
+            font-size: $title-size;
+        }
+
+        .subtitle {
+            font-size: $subtitle-size;
+        }
+    }
+
+    .btns {
+
+        margin-top: auto;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: .5rem;
+
+        height: 45px;
+
+        button {
+            width: calc(100% - 45px - .5rem);
+            height: 100% !important;
+            background-color: $base-color;
+            color: $white-color;
+        }
+
+        .swap {
+            height: 100%;
+            aspect-ratio: 1;
+        }
+        
+    }
+}
+
+.icon {
+    font-size: 45px;
+}

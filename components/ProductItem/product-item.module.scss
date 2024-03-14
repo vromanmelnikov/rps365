@@ -1,0 +1,122 @@
+@import '../../styles/variables';
+
+.main {
+    width: 100%;
+    max-width: 100%;
+    // background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap !important;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.photos {
+    width: 50%;
+    height: 100%;
+
+    // background-color: bisque;
+}
+
+.mainInfo {
+
+    width: calc(50% - 1.5rem);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    // background-color: aliceblue;
+
+    .title {
+        font-weight: 500;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .subinfo {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+
+        margin-top: .5rem;
+
+        * {
+            color: rgba(0, 0, 0, 0.75);
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            gap: .25rem;
+
+            span {
+                font-size: .875rem;
+            }
+        }
+    }
+
+    .types {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+}
+
+.type {
+    cursor: pointer;
+    background-color: $white-color;
+    border: 1px solid black;
+    border-radius: $base-radius;
+    padding: .375rem .75rem;
+    font-size: $tag-size;
+}
+
+.checkedType {
+    background-color: $base-color;
+    color: $white-color;
+    font-weight: 500;
+}
+
+.cost {
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+.icon {
+    font-size: 50px;
+}
+
+.btns {
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    button {
+        margin: 0;
+        width: 30%;
+    }
+
+    label {
+        height: 50px;
+        // display: flex;
+        // flex-direction: row;
+        // align-items: center;
+    }
+}
+
+.desc {
+    max-width: 80%;
+    margin-top: 1rem;
+    font-size: $tag-size;
+}

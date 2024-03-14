@@ -1,0 +1,11 @@
+.main {
+    margin-top: 1rem;
+    min-height: 100vh;
+}
+
+.catalog {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}

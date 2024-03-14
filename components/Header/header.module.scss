@@ -1,0 +1,177 @@
+@import "../../styles/variables";
+
+.header {
+    // width: 100vw;
+    max-width: 100vw !important;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.mainBack {
+    background-color: $white-color;
+}
+
+.destinyBack {
+    background-color: $base-color;
+}
+
+.main {
+    height: 65px;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 0;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.link {
+    span {
+        color: black;
+    }
+}
+
+.infoBlock {
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+
+}
+
+.info {
+
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    cursor: pointer;
+
+    span {
+        font-size: $info-size;
+        font-weight: 500;
+        // color: $white-color;
+    }
+
+    hr {
+    }
+}
+
+.phoneBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: center;
+}
+
+.makeCall {
+    // padding: .5rem;
+}
+
+.phones {
+
+    width: max-content;
+
+    background-color: $white-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+
+    padding: 0.5rem 0.75rem;
+    border-radius: $base-radius;
+    border: $base-border;
+
+    a {
+        text-decoration: none;
+        // color: ;
+        // font-size: $info-size;
+        cursor: pointer;
+        // font-weight: 400;
+    }
+
+    hr {
+        width: 100%;
+        border-color: $base-darker-color;
+    }
+}
+
+.logo {
+    height: 35px;
+    width: 75px;
+    background-color: rgb(255, 255, 255) ;
+}
+
+.functionals {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cartBlock {
+    position: relative;
+    padding: .5rem;
+}
+
+.destiny {
+
+    height: 45px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.tags {
+    width: 80%;
+    height: 90% !important;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    // background-color: aqua;
+
+    gap: 1.5rem;
+
+    li {
+        // height: 20px !important;
+        color: $white-color;
+        cursor: pointer;
+    }
+
+    div.divider {
+
+        border-color: $white-color;
+
+    }
+}
+
+.finder {
+    width: calc(100% - 80%);
+    display: flex;
+
+    label {
+        height: 35px;
+    }
+}

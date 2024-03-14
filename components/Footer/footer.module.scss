@@ -1,0 +1,10 @@
+@import '../../styles/variables.scss';
+
+.footer {
+    background-color: $base-color;
+
+    * {
+        color: $white-color;
+    }
+
+}

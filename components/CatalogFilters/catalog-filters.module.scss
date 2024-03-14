@@ -1,0 +1,63 @@
+@import '../../styles/variables';
+
+.filterSide {
+    width: 20%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    div {
+        width: 100%;
+    }
+}
+
+.filterBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .125rem;
+}
+
+.type {
+    font-weight: 500;
+}
+
+.select {
+    height: 2rem !important;
+}
+
+.costs {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: .25rem;
+
+    .cost {
+        width: calc(50% - .125rem);
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: $base-ligher-color;
+        // border: $base-border;
+        border-radius: $base-radius;
+        padding: .25rem .5rem !important;
+        
+        input {
+            width: 80%;
+            height: 1.5rem;
+            font-size: $input-size;
+            // padding: .25rem !important;
+        }
+    }
+}
