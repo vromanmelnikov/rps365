@@ -1,0 +1,47 @@
+@import '../../../styles/variables';
+
+.cost {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  background-color: $base-ligher-color;
+  padding: 1rem 1.5rem;
+  border-radius: $base-radius;
+}
+
+.menu {
+  width: max-content;
+  max-width: 300px;
+
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.items {
+    max-height: 150px;
+    overflow-y: auto;
+    display: flex;
+    // flex-wrap: wrap;
+    flex-direction: column !important;
+
+    gap: 0.5rem;
+}
+
+.item {
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+
+    .title {
+        font-weight: 500;
+    }
+
+    
+}

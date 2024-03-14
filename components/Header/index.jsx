@@ -3,9 +3,9 @@ import MainStyles from "../../styles/Main.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PhoneEnabledOutlinedIcon from "@mui/icons-material/PhoneEnabledOutlined";
 import React from "react";
+import CartMenu from "./CartMenu";
 
 export default function Header() {
   const links = [
@@ -82,25 +82,7 @@ export default function Header() {
                 <FavoriteBorderIcon fontSize="large" />
               </div>
             </div>
-            <div className={`${styles.cartBlock} btn btn-circle `}>
-              <div className="dropdown dropdown-end">
-                <div tabIndex={0} role="button" className="indicator">
-                  <ShoppingCartOutlinedIcon fontSize="large" />
-                  <span
-                    id="cart_item_count"
-                    className="badge badge-sm indicator-item badge-neutral"
-                  >
-                    0
-                  </span>
-                </div>
-                <div
-                  tabIndex={0}
-                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-                >
-                  <button className="btn btn-primary">Корзина</button>
-                </div>
-              </div>
-            </div>
+            <CartMenu />
           </div>
         </section>
       </div>

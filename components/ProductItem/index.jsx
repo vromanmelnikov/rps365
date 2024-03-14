@@ -57,8 +57,13 @@ export default function ProductItem({ product }) {
   }, [typeID]);
 
   function addProductToCart() {
+
+    let newProduct = structuredClone(product)
+    newProduct.type = product.types.filter(item => item.id === typeID)[0]
+    delete newProduct['types']
+    delete newProduct['tagsID']
     
-    cartService.increaseCount()
+    cartService.addProductToCart(newProduct, cost)
 
   }
 
