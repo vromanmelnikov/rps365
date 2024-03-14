@@ -5,7 +5,7 @@ import Image from "next/image";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PhoneEnabledOutlinedIcon from "@mui/icons-material/PhoneEnabledOutlined";
-import { useEffect } from "react";
+import React from "react";
 
 export default function Header() {
   const links = [
@@ -28,13 +28,6 @@ export default function Header() {
       name: "Ремонтное",
     },
   ];
-
-  useEffect(() => {
-    document.addEventListener("storage", (event) => {
-      alert('Изменилось')
-      console.log(event);
-    }, false);
-  }, []);
 
   return (
     <header className={styles.header}>
@@ -93,8 +86,11 @@ export default function Header() {
               <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="indicator">
                   <ShoppingCartOutlinedIcon fontSize="large" />
-                  <span className="badge badge-sm indicator-item badge-neutral">
-                    8
+                  <span
+                    id="cart_item_count"
+                    className="badge badge-sm indicator-item badge-neutral"
+                  >
+                    0
                   </span>
                 </div>
                 <div
@@ -113,14 +109,14 @@ export default function Header() {
           <ul className={`${styles.tags}`}>
             {tags.map((item, index) => {
               return (
-                <>
+                <React.Fragment key={index}>
                   <li className={`btn btn-ghost`} key={index}>
                     {item.name}
                   </li>
                   {index !== tags.length - 1 && (
                     <div className="divider divider-horizontal"></div>
                   )}
-                </>
+                </React.Fragment>
               );
             })}
           </ul>

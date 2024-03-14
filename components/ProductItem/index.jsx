@@ -7,6 +7,7 @@ import Images from "./Images";
 import Info from "./Info";
 import StarIcon from '@mui/icons-material/Star';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import cartService from "shared/cart.service";
 
 function getCostRange(types) {
   const costs = types.map((item) => item.cost);
@@ -56,8 +57,9 @@ export default function ProductItem({ product }) {
   }, [typeID]);
 
   function addProductToCart() {
-    window.localStorage.setItem('hello', 'hello')
-    alert('hello')
+    
+    cartService.increaseCount()
+
   }
 
   return (
@@ -93,7 +95,7 @@ export default function ProductItem({ product }) {
         <p className={`${styles.desc}`}>{desc}</p>
         <span className={`${styles.cost}`}>{cost}</span>
         <div className={`${styles.btns}`}>
-          <button onClick={addProductToCart} className={`btn btn-primary mt-3`}>В корзину</button>
+          <button onClick={() => addProductToCart()} className={`btn btn-primary mt-3`}>В корзину</button>
           <label style={{ height: "100%" }} className="swap">
             <input type="checkbox" />
             <FavoriteBorderIcon
