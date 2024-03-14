@@ -3,14 +3,14 @@ import { cwd } from "process";
 
 export default class CatalogService {
   async getItems() {
-    const file = await fs.readFile(cwd() + "/public/data/items.json");
+    const file = await fs.readFile(cwd() + "/data/items.json");
     const data = JSON.parse(file).items;
 
     return data;
   }
 
   async getItemByID(id) {
-    const file = await fs.readFile(cwd() + "/public/data/items.json");
+    const file = await fs.readFile(cwd() + "/data/items.json");
     const data = JSON.parse(file).items;
 
     let item = undefined;
@@ -26,7 +26,7 @@ export default class CatalogService {
   }
 
   async getTags() {
-    const file = await fs.readFile(cwd() + "/public/data/items.json");
+    const file = await fs.readFile(cwd() + "/data/items.json");
     const data = JSON.parse(file).tags;
 
     return data;
