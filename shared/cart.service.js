@@ -9,13 +9,17 @@ class CartService {
 
     getCartCount() {
         let cart = JSON.parse(window.localStorage.getItem('cart'))
-        return cart.length
+        let count = 0
+        if (cart) {
+            count = cart.length
+        }
+        return count
     }
 
     addProductToCart(product, typeCost) {
 
         let cart = JSON.parse(window.localStorage.getItem('cart'))
-        let cost = window.localStorage.getItem('cost')
+        let cost = parseInt(window.localStorage.getItem('cost'))
 
         if (!cart) {
             cart = []
@@ -25,7 +29,9 @@ class CartService {
         }
 
         cart.push(product)
-        cost += typeCost
+        cost += parseInt(typeCost)
+
+        console.log(cost)
 
         window.localStorage.setItem('cart', JSON.stringify(cart))
         window.localStorage.setItem('cost', cost)

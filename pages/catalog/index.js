@@ -12,11 +12,16 @@ export default function Catalog({  }) {
 
   const { data, error, isLoading } = useSWR("/api/items", fetcher);
 
+  const costRange = useSWR('/api/cost-range', fetcher)
+
   const [filteredItems, setFilteredItems] = useState([]);
 
   useEffect(() => {
     if (data) {
       setFilteredItems([...data]);
+
+
+      // catalogService.getCostRange()
     }
   }, [data]);
 

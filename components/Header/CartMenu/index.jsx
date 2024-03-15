@@ -17,10 +17,12 @@ export default function CartMenu() {
     const cost = parseInt(window.localStorage.getItem("cost"));
     const cart = JSON.parse(window.localStorage.getItem("cart"));
 
-    console.log(cart);
-
-    setCost(cost);
-    setProducts(cart);
+    if (cart) {
+      setProducts(cart);
+    }
+    if (cost) {
+      setCost(cost);
+    }
   }
 
   return (
@@ -47,6 +49,10 @@ export default function CartMenu() {
           className={`${styles.menu} dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52`}
         >
           <ul className={`${styles.items} p-2 shadow bg-base-100`}>
+            {
+              products.length === 0 &&
+              <li>Корзина пуста</li>
+            }
             {products.map((item, index) => {
               console.log(item.type);
 

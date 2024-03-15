@@ -10,10 +10,8 @@ import CartMenu from "./CartMenu";
 export default function Header() {
   const links = [
     {
-      text: "О нас",
-    },
-    {
-      text: "Акции",
+      text: "Каталог",
+      href: "/catalog",
     },
   ];
 
@@ -38,7 +36,9 @@ export default function Header() {
             {links.map((item, index) => {
               return (
                 <li className={styles.link} key={index}>
-                  <span>{item.text}</span>
+                  <Link href={item.href}>
+                    <span>{item.text}</span>
+                  </Link>
                 </li>
               );
             })}

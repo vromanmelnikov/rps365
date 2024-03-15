@@ -9,7 +9,7 @@ export default function About() {
       <Head>
         <title>{title}</title>
       </Head>
-      <Layout>
+      <Layout >
         <div>
           <h1>Main</h1>
         </div>

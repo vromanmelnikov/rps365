@@ -5,8 +5,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Images from "./Images";
 import Info from "./Info";
-import StarIcon from '@mui/icons-material/Star';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import StarIcon from "@mui/icons-material/Star";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import cartService from "shared/cart.service";
 
 function getCostRange(types) {
@@ -32,16 +32,20 @@ function ProductType({ productType, checked, onTypeIDChange }) {
 }
 
 export default function ProductItem({ product }) {
+  const [error, setError] = useState({
+    noTypeChoosen: false,
+  });
   // const catalogService = new CatalogService();
 
   const { min, max } = getCostRange(product.types);
 
   const [typeID, setTypeID] = useState(null);
-  const [desc, setDesc] = useState('')
+  const [desc, setDesc] = useState("");
   const [cost, setCost] = useState(`${min}-${max} руб.`);
 
   function onTypeIDChange(id) {
     setTypeID(id);
+    setError({ ...error, noTypeChoosen: false });
   }
 
   useEffect(() => {
@@ -52,19 +56,21 @@ export default function ProductItem({ product }) {
 
       setCost(cost);
 
-      setDesc(type.description)
+      setDesc(type.description);
     }
   }, [typeID]);
 
   function addProductToCart() {
+    if (typeID === null) {
+      setError({ ...error, noTypeChoosen: true });
+    } else {
+      let newProduct = structuredClone(product);
+      newProduct.type = product.types.filter((item) => item.id === typeID)[0];
+      delete newProduct["types"];
+      delete newProduct["tagsID"];
 
-    let newProduct = structuredClone(product)
-    newProduct.type = product.types.filter(item => item.id === typeID)[0]
-    delete newProduct['types']
-    delete newProduct['tagsID']
-    
-    cartService.addProductToCart(newProduct, cost)
-
+      cartService.addProductToCart(newProduct, cost);
+    }
   }
 
   return (
@@ -100,7 +106,16 @@ export default function ProductItem({ product }) {
         <p className={`${styles.desc}`}>{desc}</p>
         <span className={`${styles.cost}`}>{cost}</span>
         <div className={`${styles.btns}`}>
-          <button onClick={() => addProductToCart()} className={`btn btn-primary mt-3`}>В корзину</button>
+          <button
+            onClick={() => addProductToCart()}
+            className={`btn btn-primary mt-3 ${
+              error.noTypeChoosen === true && "btn-error"
+            }`}
+          >
+            {error.noTypeChoosen === false
+              ? "В корзину"
+              : "Выберите тип товара"}
+          </button>
           <label style={{ height: "100%" }} className="swap">
             <input type="checkbox" />
             <FavoriteBorderIcon
